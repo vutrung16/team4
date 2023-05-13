@@ -1,0 +1,104 @@
+<div class="mt-4">
+    <h3>QUẢN LÍ THÔNG TIN NHÂN VIÊN </h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Họ tên giáo viên</th>
+                <th scope="col">Tổng số giờ dạy</th>
+                <th scope="col">Mã số giáo viên</th>
+                <th scope="col">Bằng cấp</th>
+                <th scope="col">Tên lớp học</th>
+                <th scope="col">Mã lớp học</th>
+                <th scope="col">Tên môn học</th>
+                <th scope="col">Sinh viên/lớp</th>
+                <th scope="col">Số tiền/giờ (VNĐ)</th>
+                <th scope="col">Hệ số giáo viên</th>
+                <th scope="col">Hệ số lớp học</th>
+                <th scope="col">Hệ số môn học</th>
+                <th scope="col" colspan="1">Tổng tiền lương (VNĐ)</th>    
+                <th>Chỉnh sửa dữ liệu</th>
+                {{!-- Colspan chỉnh thêm độ dài --}}
+            </tr>
+        </thead>
+        <tbody>   
+            {{#each moneys}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.NameTeacher}}</td>
+                <td>{{this.NumberTeachHour}}</td>
+                <td>{{this.MaTeacher}}</td>
+                <td>{{this.Diploma}}</td>
+                <td>{{this.nameClass}}</td>
+                <td>{{this.MaClass}}</td>
+                <td>{{this.NameSubject}}</td>
+                <td>{{this.NumberStudent}}</td>
+                <td>{{this.MoneyAHour}}</td>
+                <td>{{this.TeacherIsbn}}</td>
+                <td>{{this.ClassIsbn}}</td>
+                <td>{{this.SubjectIsbn}}</td>
+                <td>{{this.TotalMoney}}</td>
+                <td>
+                    <a href="/money/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+                    <a href="" class="btn btn-link" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-course-modal">Xóa</a> 
+                </td>
+            </tr>
+            {{else}}
+                <tr >
+                    <td class="text-center" colspan="15">
+                        Bạn chưa nhập bất kì thông tin gì ở đây!
+                        <a href="/money/create">Nhập thông tin tại đây</a>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>  
+    </table>
+</div>
+
+{{!-- Delete --}}
+<div class="modal fade" id="delete-course-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Xóa khóa học</h1>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+            <span class="material-icons">close</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn chắc chắn muốn xóa khóa học này chứ?
+      </div>
+      <div class="modal-footer">
+        <button id="btn-course-dle" type="button" class="btn btn-primary">Xóa </button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <form id="delete-course-form" method="POST"  > </form>
+    {{!-- <form method="POST" action="/course/{{course._id}}?_method=PUT"  >
+    Không cần truyền action vì course.id này là 1 list chứ không như tùng id trong course update kia
+     --}}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+    var courseId ;
+    var deleteForm = document.forms['delete-course-form'];
+    var BtnDelete = document.getElementById('btn-course-dle');
+    $('#delete-course-modal').on('show.bs.modal', function (event){
+        var button = $(event.relatedTarget);
+        courseId = button.data('id');
+        
+    })
+
+    BtnDelete.onclick = function (){
+        deleteForm.action = '/money/' + courseId + '?_method=DELETE';
+        deleteForm.submit();
+        {{!-- submit để nộp form đấy lên  --}}
+    }
+    
+
+    })
+
+</script>

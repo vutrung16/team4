@@ -1,0 +1,100 @@
+<div class="mt-4">
+    <form class="fix-display" method="POST" action="/money/{{money._id}}?_method=PUT"  >
+    {{!-- thực hiện phương thức post và đường dẫn là course/store --}}
+        <div class="col-third col"> 
+            <h3>Thông tin giáo viên </h3>
+            <div class="mb-3 fix-width">
+                <label for="NameTeacher" class="form-label">Họ tên giáo viên</label>
+                <input type="text" class="form-control" id="NameTeacher" value="{{money.NameTeacher}}" name="NameTeacher">
+            </div>
+            <div class="mb-3 fix-width">
+                <label for="NumberTeachHour" class="form-label">Tổng số giờ dạy</label>
+                <input type="number" class="form-control" id="NumberTeachHour" value="{{money.NumberTeachHour}}" name="NumberTeachHour">
+            </div>
+            <div class="mb-3 fix-width">
+                <label for="MaTeacher" class="form-label">Mã số giáo viên</label>
+                <input type="text" class="form-control" id="MaTeacher" value="{{money.MaTeacher}}" name="MaTeacher">
+            </div>
+            <div class="mb-3 fix-width">
+                <label for="Diploma" class="form-label">Bằng cấp</label>
+                <input type="text" inputmode="decimal" class="form-control" id="Diploma" value="{{money.Diploma}}" name="Diploma" list="myList1">
+                <datalist id="myList1">
+                    <option value="Đại học">Đại học</option>
+                    <option value="Thạc sĩ">Thạc sĩ</option>
+                    <option value="Tiến sĩ">Tiến sĩ</option>
+                    <option value="Phó giáo sư">Phó giáo sư</option>
+                    <option value="Giáo sư">Giáo sư</option>
+                </datalist>
+            </div>
+        </div>
+
+        {{!-- Thông tin lớp học --}}
+        <div class="col-third col">
+            <h3>Thông tin lớp học </h3>
+            <div class="mb-3 fix-width">
+                <label for="nameClass" class="form-label">Tên lớp học</label>
+                <input type="text" class="form-control" id="nameClass" value="{{money.nameClass}}" name="nameClass">
+            </div>
+            <div class="mb-3 fix-width">
+                <label for="MaClass" class="form-label">Mã lớp học</label>
+                <input type="text" class="form-control" id="MaClass" value="{{money.MaClass}}" name="MaClass">
+            </div>
+            <div class="mb-3 fix-width">
+                <label for="NameSubject" class="form-label"> Tên môn học</label>
+                <input type="text" class="form-control" id="NameSubject" value="{{money.NameSubject}}" name="NameSubject">
+            </div>
+            <div class="mb-3 fix-width">
+                <label for="NumberStudent" class="form-label">Sinh viên/lớp</label>
+                <input type="number" class="form-control" id="NumberStudent" value="{{money.NumberStudent}}" name="NumberStudent">
+            </div>
+        </div>
+
+         <div class="col-third col">
+            <h3>Nhập thông tin hệ số </h3>
+            <div class="mb-3 fix-width">
+                <label for="MoneyAHour" class="form-label">Số tiền/giờ (VNĐ) </label>
+                <input type="number" class="form-control" id="MoneyAHour"  name="MoneyAHour" value="{{money.MoneyAHour}}">
+            </div>
+            <div class="mb-3 fix-width">
+                <label for="TeacherIsbn" class="form-label">Hệ số giáo viên (Chọn theo bằng cấp)</label>
+                <input type="number" step="0.1" inputmode="decimal" class="form-control" id="TeacherIsbn" value="{{money.TeacherIsbn}}" name="TeacherIsbn" list="myList2">
+                <datalist id="myList2">
+                    <option value="1.3">Đại học là 1.3</option>
+                    <option value="1.4">Thạc sĩ - 1.4</option>
+                    <option value="1.5">Tiến sĩ - 1.5</option>
+                    <option value="1.6">Phó giáo sư - 1.6</option>
+                    <option value="1.7">Giáo sư - 1.7</option>
+                </datalist>
+            </div>
+            <div class="mb-3 fix-width">
+                <label for="ClassIsbn" class="form-label">Hệ số lớp học</label>
+                <input type="number" step="0.1" inputmode="decimal" class="form-control" id="ClassIsbn" value="{{money.ClassIsbn}}" name="ClassIsbn" list="myList3">
+                <datalist id="myList3">
+                    <option value="-0.5">Sinh viên < 20</option>
+                    <option value="0">20 <= Sinh viên <40 </option>
+                    <option value="0.2">Sinh viên > 40 </option>
+                </datalist>
+            </div>
+            <div class="mb-3 fix-width">
+                <label for="SubjectIsbn" class="form-label">Hệ số môn học</label>
+                <input type="number" step="0.1" inputmode="decimal" class="form-control" id="SubjectIsbn" value="{{money.SubjectIsbn}}" name="SubjectIsbn" list="myList4">
+                <datalist id="myList4">
+                     <option value="0">Thường là 0</option>
+                     <option value="0.1">0.1</option>
+                     <option value="0.2">0.2</option>
+                     <option value="0.3">0.3</option>
+                </datalist>
+            </div>
+        </div>
+
+          <button type="submit" class="fixx-center"> Lưu lại</button>
+    </form>  
+
+
+</div>
+
+
+
+
+
+

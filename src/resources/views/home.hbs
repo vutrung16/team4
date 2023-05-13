@@ -1,0 +1,16 @@
+<div class="mt-4">
+    <div class="row">
+    
+        {{#each moneys}}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Giảng viên: {{this.NameTeacher}}</h5>
+                <p class="card-text">Mã GV: {{this.MaTeacher}}</p>
+                <p class="card-text">Môn: {{this.NameSubject}}</p>
+                <a href="/money/{{this.slug}}" class="btn btn-primary">Bảng lương</a>
+            </div>
+        </div>
+        {{/each}}
+        
+    </div>
+</div>
